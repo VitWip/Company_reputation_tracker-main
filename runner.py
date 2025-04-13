@@ -106,6 +106,17 @@ def process_company(company_id, article_limit=10):
     try:
         mentions_added = db.add_mentions(company_id, enriched_mentions)
         log_info(f"Added {mentions_added} mentions to the database")
+        
+        # Ensure database changes are committed
+        session = db.get_db()
+        try:
+            session.commit()
+            log_info(f"Database changes for company {company.name} have been committed")
+        except Exception as e:
+            session.rollback()
+            log_error(f"Error committing database changes: {str(e)}", exc_info=True)
+        finally:
+            session.close()
     except Exception as e:
         log_error(f"Error saving mentions: {str(e)}", exc_info=True)
         return {
@@ -146,6 +157,17 @@ def run_all_companies(article_limit=10):
     for company in companies:
         result = process_company(company.id, article_limit)
         results.append(result)
+    
+    # Ensure database changes are committed
+    session = db.get_db()
+    try:
+        session.commit()
+        log_info("All database changes have been committed")
+    except Exception as e:
+        session.rollback()
+        log_error(f"Error committing database changes: {str(e)}", exc_info=True)
+    finally:
+        session.close()
     
     # Generate summary
     successful = sum(1 for r in results if r and r.get("status") == "success")

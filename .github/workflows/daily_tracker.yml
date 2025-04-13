@@ -72,13 +72,13 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git status --porcelain assets/data/
-          if [[ $(git status --porcelain assets/data/) ]]; then
+          git status --porcelain assets/data/ company_tracker.db
+          if [[ $(git status --porcelain assets/data/ company_tracker.db) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in data files"
+            echo "Changes detected in data files or database"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in data files"
+            echo "No changes detected in data files or database"
           fi
       
       - name: Commit and push if changes
@@ -86,6 +86,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add assets/data/*.json
-          git commit -m "Update dashboard data [skip ci]"
+          git add assets/data/*.json company_tracker.db
+          git commit -m "Update dashboard data and database [skip ci]"
           git push
