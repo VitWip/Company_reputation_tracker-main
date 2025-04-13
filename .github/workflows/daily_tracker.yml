@@ -6,29 +6,20 @@ on:
   workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  update_and_deploy:
+  # First job: Update data and commit changes
+  update_data:
     runs-on: ubuntu-latest
     
     permissions:
       contents: write
-      pages: write
-      id-token: write  # Required for pages deployment
     
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
     
-    # GitHub Pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -45,11 +36,8 @@ jobs:
       - name: Run data processing pipeline
         run: |
           # Initialize DB and directories
-          mkdir -p logs assets/data backups
+          mkdir -p logs assets/data
           python -c "from db import init_db; init_db()"
-          
-          # Backup database
-          cp -f company_tracker.db backups/company_tracker_$(date +%Y%m%d).db 2>/dev/null || echo "No database to backup yet"
           
           # Process data and generate static files
           python runner.py --all --limit 20 || python runner.py --generate-only
@@ -70,28 +58,40 @@ jobs:
           git add assets/data/*.json company_tracker.db logs/*.log || true
           git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
           git push || echo "No changes to push or push failed"
-      
-      # Setup Pages
-      - name: Setup Pages
-        id: pages
-        uses: actions/configure-pages@v3
 
-      # Build with Jekyll
+  # Second job: Deploy to GitHub Pages
+  deploy_pages:
+    needs: update_data
+    runs-on: ubuntu-latest
+    
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      pages: write
+      id-token: write
+    
+    # Deploy to the github-pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+      
       - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
-          
-      # Upload artifact
-      - name: Upload artifact
-        uses: actions/upload-artifact@v3  # Use this artifact uploader first
-        with:
-          name: github-pages
-          path: ./_site
-          if-no-files-found: error
       
-      # Deploy to GitHub Pages
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./_site
+      
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v2
+        uses: actions/deploy-pages@v1
