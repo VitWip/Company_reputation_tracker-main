@@ -12,6 +12,11 @@ jobs:
   track_reputation:
     runs-on: ubuntu-latest
     
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+      NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
@@ -25,6 +30,16 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
+      
+      - name: Check API keys
+        run: |
+          if [ -z "$OPENAI_API_KEY" ]; then
+            echo "Warning: OPENAI_API_KEY is not set. Sentiment analysis may not work properly."
+          fi
+          if [ -z "$NEWSAPI_KEY" ]; then
+            echo "Warning: NEWSAPI_KEY is not set. News fetching may not work properly."
+          fi
       
       - name: Run reputation tracker
         run: |
@@ -33,6 +48,15 @@ jobs:
       - name: Generate static data files
         run: |
           python generate_static_data.py
+      
+      - name: Verify data files were generated
+        run: |
+          if [ -f "assets/data/dashboard_data.json" ] && [ -f "assets/data/companies.json" ]; then
+            echo "Data files successfully generated"
+          else
+            echo "Warning: Some data files are missing"
+            ls -la assets/data/
+          fi
       
       - name: Check for changes
         id: check_changes
@@ -52,3 +76,10 @@ jobs:
           git add assets/data/*.json
           git commit -m "Update dashboard data [skip ci]"
           git push
+      
+      - name: Upload data as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: dashboard-data
+          path: assets/data/*.json
+          retention-days: 7

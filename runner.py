@@ -6,13 +6,35 @@ This script runs the reputation tracking pipeline for companies.
 
 import argparse
 import json
+import os
 from datetime import datetime
 import db  # Import db instead of database
-from api_client import NewsClient, analyze_mentions  # Adjust import to match your filename
 from logger import get_logger, log_function_call, log_info, log_error, log_warning, log_startup, log_shutdown
 
 # Get logger
 logger = get_logger()
+
+# Check for API keys and import API client only if keys are available
+try:
+    from api_client import NewsClient, analyze_mentions
+    
+    # Check for required API keys
+    news_api_key = os.environ.get('NEWSAPI_KEY')
+    openai_api_key = os.environ.get('OPENAI_API_KEY')
+    
+    API_AVAILABLE = True
+    if not news_api_key:
+        log_warning("NEWSAPI_KEY environment variable not set. News fetching will be skipped.")
+        API_AVAILABLE = False
+    if not openai_api_key:
+        log_warning("OPENAI_API_KEY environment variable not set. Sentiment analysis will be skipped.")
+        API_AVAILABLE = False
+    
+    if not API_AVAILABLE:
+        log_warning("Running in data generation mode only - no new data will be fetched.")
+except ImportError as e:
+    log_error(f"API client import failed: {str(e)}")
+    API_AVAILABLE = False
 
 @log_function_call
 def process_company(company_id, article_limit=10):
@@ -29,6 +51,17 @@ def process_company(company_id, article_limit=10):
         return None
     
     log_info(f"Processing company: {company.name} (ID: {company.id})")
+    
+    # Skip API calls if not available
+    if not API_AVAILABLE:
+        log_warning(f"Skipping API calls for {company.name} - API not available")
+        return {
+            "company_name": company.name,
+            "company_id": company.id,
+            "mentions_added": 0,
+            "status": "skipped",
+            "message": "API not available. Skipping data fetching."
+        }
     
     # Get company aliases
     aliases = db.get_company_aliases(company_id)
@@ -102,7 +135,7 @@ def run_all_companies(article_limit=10):
     # Get all companies
     companies = db.get_companies()
     if not companies:
-        print("No companies found in the database.")
+        log_warning("No companies found in the database.")
         return {
             "timestamp": datetime.now().isoformat(),
             "status": "warning",
@@ -116,13 +149,15 @@ def run_all_companies(article_limit=10):
     
     # Generate summary
     successful = sum(1 for r in results if r and r.get("status") == "success")
+    skipped = sum(1 for r in results if r and r.get("status") == "skipped")
     total_mentions = sum(r.get("mentions_added", 0) for r in results if r and r.get("status") == "success")
     
     summary = {
         "timestamp": datetime.now().isoformat(),
         "companies_processed": len(results),
         "successful": successful,
-        "failed": len(results) - successful,
+        "skipped": skipped,
+        "failed": len(results) - successful - skipped,
         "total_new_mentions": total_mentions,
         "details": results
     }
@@ -131,7 +166,7 @@ def run_all_companies(article_limit=10):
     with open("pipeline_run_report.json", "w") as f:
         json.dump(summary, f, indent=2)
     
-    print(f"Pipeline completed. Processed {len(results)} companies, added {total_mentions} new mentions.")
+    log_info(f"Pipeline completed. Processed {len(results)} companies, added {total_mentions} new mentions.")
     return summary
 
 def add_new_company(name, aliases):
@@ -141,13 +176,15 @@ def add_new_company(name, aliases):
     
     company = db.add_company(name, aliases)
     if company:
-        print(f"Added company: {name} (ID: {company.id})")
+        log_info(f"Added company: {name} (ID: {company.id})")
         return company.id
     else:
-        print(f"Failed to add company: {name}")
+        log_error(f"Failed to add company: {name}")
         return None
 
 if __name__ == "__main__":
+    log_startup("Company Reputation Tracker")
+    
     parser = argparse.ArgumentParser(description="Company Reputation Tracker")
     parser.add_argument("--company", type=int, help="Company ID to process")
     parser.add_argument("--all", action="store_true", help="Process all companies")
@@ -155,19 +192,28 @@ if __name__ == "__main__":
     parser.add_argument("--name", type=str, help="Company name (for --add)")
     parser.add_argument("--aliases", type=str, help="Company aliases, comma-separated (for --add)")
     parser.add_argument("--limit", type=int, default=10, help="Limit the number of articles to process (default: 10)")
+    parser.add_argument("--generate-only", action="store_true", help="Skip API calls and only generate static data")
     
     args = parser.parse_args()
     
+    # If no arguments are provided, default to --all
+    if not any([args.company, args.all, args.add, args.generate_only]):
+        args.all = True
+    
+    if args.generate_only:
+        log_info("Running in generate-only mode. Skipping API calls.")
+        # We'll proceed to generate static data without API calls
+    
     if args.add:
         if not args.name:
-            print("Error: --name is required when adding a company")
+            log_error("Error: --name is required when adding a company")
         else:
             aliases = args.aliases.split(",") if args.aliases else []
             add_new_company(args.name, aliases)
     
     elif args.company:
         result = process_company(args.company, args.limit)
-        print(json.dumps(result, indent=2))
+        log_info(json.dumps(result, indent=2))
     
     elif args.all:
         run_all_companies(args.limit)
@@ -178,12 +224,20 @@ if __name__ == "__main__":
         companies = db.get_companies()
         
         if companies:
-            print("Available companies:")
+            log_info("Available companies:")
             for company in companies:
                 aliases = company.aliases.split(",") if company.aliases else []
-                print(f"  ID {company.id}: {company.name} (Aliases: {', '.join(aliases)})")
-            print("\nUse --company ID to process a specific company")
-            print("Use --all to process all companies")
-            print("Use --limit N to limit the number of articles (default: 10)")
+                log_info(f"  ID {company.id}: {company.name} (Aliases: {', '.join(aliases)})")
         else:
-            print("No companies found. Add a company with --add --name COMPANY_NAME")
+            log_warning("No companies found. Add a company with --add --name COMPANY_NAME")
+    
+    # Always generate static data at the end
+    try:
+        log_info("Generating static data files...")
+        from generate_static_data import generate_all_data
+        generate_all_data()
+        log_info("Static data generation completed")
+    except Exception as e:
+        log_error(f"Error generating static data: {str(e)}", exc_info=True)
+    
+    log_shutdown("Company Reputation Tracker")
