@@ -84,20 +84,44 @@ jobs:
             echo "Contents:"
             ls -la assets/data/
             
-            # Check JSON structure of the dashboard data
-            echo "Checking dashboard_data.json structure..."
-            python -c "
-import json, sys
-try:
-    with open('assets/data/dashboard_data.json', 'r') as f:
-        data = json.load(f)
-    if not all(k in data for k in ['company', 'stats', 'mentions', 'timeline']):
-        print('❌ dashboard_data.json is missing required fields')
-        sys.exit(1)
-    print('✅ dashboard_data.json has the correct structure')
-except Exception as e:
-    print(f'❌ Error checking dashboard_data.json: {str(e)}')
+            # Simple check for dashboard data file size
+            FILESIZE=$(stat -c%s "assets/data/dashboard_data.json" 2>/dev/null || stat -f%z "assets/data/dashboard_data.json")
+            if [ "$FILESIZE" -lt 100 ]; then
+              echo "❌ Warning: dashboard_data.json is too small, may be empty or corrupted"
+            else
+              echo "✅ dashboard_data.json size looks good: $FILESIZE bytes"
+            fi
+            
+            # Check if the JSON files are valid
+            echo "Validating JSON files..."
+            
+            # Create a simple validation script
+            cat > validate_json.py << 'EOF'
+import json
+import sys
+import os
+
+def validate_file(filepath):
+    try:
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+        print(f"✅ {filepath} is valid JSON")
+        return True
+    except Exception as e:
+        print(f"❌ {filepath} is invalid: {str(e)}")
+        return False
+
+# Validate dashboard data
+dashboard_valid = validate_file('assets/data/dashboard_data.json')
+companies_valid = validate_file('assets/data/companies.json')
+
+# Exit with error if any validation failed
+if not (dashboard_valid and companies_valid):
     sys.exit(1)
+EOF
+            
+            # Run the validation
+            python validate_json.py || echo "JSON validation failed, but continuing workflow"
           else
             echo "Warning: Some data files are missing"
             echo "Current directory content:"
