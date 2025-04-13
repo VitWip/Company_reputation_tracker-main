@@ -1,24 +1,33 @@
 name: Company Reputation Tracker
 
 on:
+  # Runs on schedule
   schedule:
     - cron: '30 17 * * *'  # 5:30 PM UTC daily
-  workflow_dispatch:  # Allow manual triggering
+  
+  # Allows manual triggering
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: write  # For writing to repository
+  pages: write  # For GitHub Pages
+  id-token: write  # Required for GitHub Pages
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
-  # First job: Update data and commit changes
-  update_data:
+  # Single job that handles both data update and pages deployment
+  update-and-deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: write
-    
-    env:
-      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-    
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v3
       
       - name: Set up Python
@@ -33,17 +42,23 @@ jobs:
           pip install nltk
           python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
       
-      - name: Run data processing pipeline
+      - name: Run data processing
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
         run: |
-          # Initialize DB and directories
+          # Initialize directories and database
           mkdir -p logs assets/data
           python -c "from db import init_db; init_db()"
           
-          # Process data and generate static files
+          # Process data
           python runner.py --all --limit 20 || python runner.py --generate-only
+          
+          # Generate static files
           python generate_static_data.py
           
           # Verify files were generated
+          ls -la assets/data/
           if [ -f "assets/data/dashboard_data.json" ]; then
             echo "✅ Static data generated successfully"
           else
@@ -57,26 +72,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add assets/data/*.json company_tracker.db logs/*.log || true
           git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
-          git push || echo "No changes to push or push failed"
-
-  # Second job: Deploy to GitHub Pages
-  deploy_pages:
-    needs: update_data
-    runs-on: ubuntu-latest
-    
-    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
-    permissions:
-      pages: write
-      id-token: write
-    
-    # Deploy to the github-pages environment
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+          git push origin HEAD || echo "No changes to push or push failed"
       
       - name: Setup Pages
         uses: actions/configure-pages@v3
