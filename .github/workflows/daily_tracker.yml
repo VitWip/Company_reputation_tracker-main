@@ -20,11 +20,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single job that handles both data update and pages deployment
-  update-and-deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  # First job: Update the data
+  update-data:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -72,7 +69,18 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add assets/data/*.json company_tracker.db logs/*.log || true
           git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
-          git push origin HEAD || echo "No changes to push or push failed"
+          git push || echo "No changes to push or push failed"
+
+  # Second job: Build and deploy the static site
+  build-and-deploy:
+    needs: update-data
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
       
       - name: Setup Pages
         uses: actions/configure-pages@v3
@@ -84,9 +92,12 @@ jobs:
           destination: ./_site
       
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        # Use the generic artifact upload action to avoid dependency issues
+        uses: actions/upload-artifact@v3
         with:
+          name: github-pages
           path: ./_site
+          retention-days: 1
       
       - name: Deploy to GitHub Pages
         id: deployment
