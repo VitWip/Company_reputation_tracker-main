@@ -5,19 +5,32 @@ let dashboardData = null;
 
 // Initialize the dashboard when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+  console.log('Dashboard initialization started');
+  
   // Get the base URL for the site
   const baseUrl = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+  console.log('Base URL:', baseUrl);
   
   // Fetch dashboard data from JSON file
-  fetch(`${baseUrl}/assets/data/dashboard_data.json`)
+  // Use absolute path for GitHub Pages
+  const dataUrl = '/Company_reputation_tracker/assets/data/dashboard_data.json';
+  console.log('Fetching data from:', dataUrl);
+  
+  fetch(dataUrl)
     .then(response => {
+      console.log('Response status:', response.status);
       if (!response.ok) {
         throw new Error(`Network response was not ok: ${response.status}`);
       }
       return response.json();
     })
     .then(data => {
+      console.log('Data loaded successfully:', data);
       dashboardData = data;
+      
+      if (!data || !data.stats || !data.mentions || !data.timeline) {
+        throw new Error('Invalid data structure received');
+      }
       
       // Update metrics
       updateMetrics(dashboardData.stats);
@@ -28,35 +41,41 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Populate mentions table
       populateMentionsTable(dashboardData.mentions);
+      
+      // Show the dashboard content
+      showDashboard();
     })
     .catch(error => {
       console.error('Error loading dashboard data:', error);
-      document.getElementById('mentions-table').innerHTML = `
-        <div class="alert alert-danger" role="alert">
-          Error loading data: ${error.message}. Please try again later.
-        </div>
-      `;
+      handleError(error);
     });
 });
 
 // Update the metrics cards with data
 function updateMetrics(stats) {
-  document.getElementById('total-mentions').textContent = stats.TOTAL;
+  console.log('Updating metrics with stats:', stats);
   
-  const avgScore = stats.AVG_SCORE.toFixed(2);
+  if (!stats) {
+    console.error('No stats provided to updateMetrics');
+    return;
+  }
+  
+  document.getElementById('total-mentions').textContent = stats.TOTAL || 0;
+  
+  const avgScore = (stats.AVG_SCORE || 0).toFixed(2);
   document.getElementById('sentiment-score').textContent = avgScore;
   
   // Update progress bars
-  const positiveWidth = Math.max(0, stats.AVG_SCORE * 100);
-  const negativeWidth = Math.max(0, -stats.AVG_SCORE * 100);
+  const positiveWidth = Math.max(0, (stats.AVG_SCORE || 0) * 100);
+  const negativeWidth = Math.max(0, -(stats.AVG_SCORE || 0) * 100);
   document.getElementById('positive-progress').style.width = positiveWidth + '%';
   document.getElementById('negative-progress').style.width = negativeWidth + '%';
   
   // Calculate percentages
-  const total = stats.TOTAL;
-  const positivePct = ((stats.POSITIVE / total) * 100).toFixed(1);
-  const neutralPct = ((stats.NEUTRAL / total) * 100).toFixed(1);
-  const negativePct = ((stats.NEGATIVE / total) * 100).toFixed(1);
+  const total = stats.TOTAL || 1; // Avoid division by zero
+  const positivePct = ((stats.POSITIVE || 0) / total * 100).toFixed(1);
+  const neutralPct = ((stats.NEUTRAL || 0) / total * 100).toFixed(1);
+  const negativePct = ((stats.NEGATIVE || 0) / total * 100).toFixed(1);
   
   document.getElementById('positive-pct').textContent = positivePct + '%';
   document.getElementById('neutral-pct').textContent = neutralPct + '%';
