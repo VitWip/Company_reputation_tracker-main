@@ -93,7 +93,7 @@ jobs:
       
       - name: Upload artifact
         # Use the Pages specific artifact upload action
-        uses: actions/upload-pages-artifact@v1.0.8
+        uses: actions/upload-artifact@v3.1.3
         with:
           path: ./_site
       
