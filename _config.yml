@@ -1,8 +1,8 @@
 # Site settings
 title: Company Reputation Tracker
 description: Track company mentions and sentiment analysis
-baseurl: "/Company_reputation_tracker" # Repository name
-url: "https://yourusername.github.io" # Your GitHub Pages URL
+baseurl: "" # Empty for root repository
+url: "" # Will be set by GitHub Pages
 
 # Build settings
 markdown: kramdown

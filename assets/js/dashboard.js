@@ -12,8 +12,8 @@ document.addEventListener('DOMContentLoaded', function() {
   console.log('Base URL:', baseUrl);
   
   // Fetch dashboard data from JSON file
-  // Use absolute path for GitHub Pages
-  const dataUrl = '/Company_reputation_tracker/assets/data/dashboard_data.json';
+  // Use relative path for GitHub Pages
+  const dataUrl = 'assets/data/dashboard_data.json';
   console.log('Fetching data from:', dataUrl);
   
   fetch(dataUrl)
