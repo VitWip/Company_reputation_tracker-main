@@ -49,6 +49,15 @@ document.addEventListener('DOMContentLoaded', function() {
       console.error('Error loading dashboard data:', error);
       handleError(error);
     });
+    
+  // Handle window resize to make charts responsive
+  window.addEventListener('resize', function() {
+    if (dashboardData) {
+      // Redraw charts on window resize
+      createSentimentChart(dashboardData.stats);
+      createTimelineChart(dashboardData.timeline);
+    }
+  });
 });
 
 // Update the metrics cards with data
@@ -84,15 +93,17 @@ function updateMetrics(stats) {
 
 // Create the sentiment distribution chart
 function createSentimentChart(stats) {
+  if (!stats) return;
+  
   const data = [
     {
       x: ['Positive', 'Neutral', 'Negative'],
-      y: [stats.POSITIVE, stats.NEUTRAL, stats.NEGATIVE],
+      y: [stats.POSITIVE || 0, stats.NEUTRAL || 0, stats.NEGATIVE || 0],
       type: 'bar',
       marker: {
         color: ['#28a745', '#6c757d', '#dc3545']
       },
-      text: [stats.POSITIVE, stats.NEUTRAL, stats.NEGATIVE],
+      text: [stats.POSITIVE || 0, stats.NEUTRAL || 0, stats.NEGATIVE || 0],
       textposition: 'auto'
     }
   ];
@@ -101,7 +112,7 @@ function createSentimentChart(stats) {
     plot_bgcolor: 'rgba(0,0,0,0)',
     paper_bgcolor: 'rgba(0,0,0,0)',
     margin: {l: 40, r: 20, t: 20, b: 40},
-    height: 300,
+    autosize: true,
     xaxis: {
       title: '',
       fixedrange: true
@@ -112,13 +123,24 @@ function createSentimentChart(stats) {
     }
   };
   
-  const config = {responsive: true, displayModeBar: false};
+  const config = {
+    responsive: true, 
+    displayModeBar: false,
+    toImageButtonOptions: {
+      format: 'png',
+      filename: 'sentiment_distribution',
+      height: 500,
+      width: 700
+    }
+  };
   
   Plotly.newPlot('sentiment-chart', data, layout, config);
 }
 
 // Create the sentiment timeline chart
 function createTimelineChart(timelineData) {
+  if (!timelineData || timelineData.length === 0) return;
+  
   // Prepare data for the chart
   const dates = timelineData.map(item => item.date);
   const scores = timelineData.map(item => item.score);
@@ -166,7 +188,7 @@ function createTimelineChart(timelineData) {
     plot_bgcolor: 'rgba(0,0,0,0)',
     paper_bgcolor: 'rgba(0,0,0,0)',
     margin: {l: 40, r: 20, t: 20, b: 40},
-    height: 300,
+    autosize: true,
     xaxis: {
       title: 'Date',
       fixedrange: true
@@ -189,7 +211,16 @@ function createTimelineChart(timelineData) {
     }
   };
   
-  const config = {responsive: true, displayModeBar: false};
+  const config = {
+    responsive: true, 
+    displayModeBar: false,
+    toImageButtonOptions: {
+      format: 'png',
+      filename: 'sentiment_timeline',
+      height: 500,
+      width: 700
+    }
+  };
   
   Plotly.newPlot('timeline-chart', traces, layout, config);
 }
