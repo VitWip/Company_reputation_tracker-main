@@ -1,0 +1,29 @@
+# Site settings
+title: Company Reputation Tracker
+description: Track company mentions and sentiment analysis
+baseurl: "/Company_reputation_tracker" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - .github/
+  - __pycache__/
+  - api_client.py
+  - company_tracker.db
+  - dashboard.py
+  - db.py
+  - logger.py
+  - logs/
+  - requirements.txt
+  - runner.py
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/

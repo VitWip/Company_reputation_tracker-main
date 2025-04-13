@@ -1,0 +1,111 @@
+---
+layout: default
+title: Company Reputation Tracker
+---
+
+<div class="container mt-4">
+  <div class="row">
+    <!-- Sidebar/Left column -->
+    <div class="col-md-3">
+      <div class="p-3 bg-light rounded">
+        <h4 class="mb-3">About</h4>
+        <p>
+          This dashboard tracks company mentions from news sources and analyzes sentiment using AI.
+          Data is updated periodically through automated processes.
+        </p>
+        <hr>
+        <p class="text-muted small">
+          This is a static version of the Company Reputation Tracker dashboard.
+          For the full interactive version, please refer to the original Python application.
+        </p>
+      </div>
+    </div>
+    
+    <!-- Main content/Right column -->
+    <div class="col-md-9">
+      <h2>Company Reputation Dashboard</h2>
+      
+      <!-- Metrics Row -->
+      <div class="row mb-4">
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h3 id="total-mentions">--</h3>
+              <p class="text-muted">Total Mentions</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-body text-center">
+              <h3 id="sentiment-score">--</h3>
+              <p class="text-muted">Sentiment Score</p>
+              <div class="progress" style="height: 10px;">
+                <div class="progress-bar bg-danger" id="negative-progress" style="width: 0%"></div>
+                <div class="progress-bar bg-success" id="positive-progress" style="width: 0%"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card">
+            <div class="card-body text-center">
+              <h3 id="positive-pct">--</h3>
+              <p class="text-muted text-success">Positive</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card">
+            <div class="card-body text-center">
+              <h3 id="neutral-pct">--</h3>
+              <p class="text-muted text-secondary">Neutral</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="card">
+            <div class="card-body text-center">
+              <h3 id="negative-pct">--</h3>
+              <p class="text-muted text-danger">Negative</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Charts Row -->
+      <div class="row mb-4">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sentiment Distribution</h5>
+              <div id="sentiment-chart" style="height: 300px;"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Sentiment Over Time</h5>
+              <div id="timeline-chart" style="height: 300px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Recent Mentions -->
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title">Recent Mentions</h5>
+          <div id="mentions-table">
+            <p>Loading mentions data...</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Load JavaScript for charts -->
+<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+<script src="/Company_reputation_tracker/assets/js/dashboard.js"></script>

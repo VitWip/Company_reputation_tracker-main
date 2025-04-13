@@ -13,6 +13,7 @@ A Dash-powered application that tracks company mentions from news sources, analy
 - **Advanced Sentiment Analysis** – Leverages OpenAI's GPT-4o-mini model to label each mention as POSITIVE, NEUTRAL, or NEGATIVE, with a score between -1 and +1.  
 - **Content Extraction** – Uses BeautifulSoup to retrieve full article text for more accurate analysis.  
 - **Interactive Dash Dashboard** – Visualize sentiment distribution, timeline trends, and detailed mention tables in real-time.  
+- **Static GitHub Pages Dashboard** – A static version of the dashboard available online without running the Python application.  
 - **SQLite Database** – Persist all companies, aliases, and mentions in a local database.  
 - **GitHub Actions Automation** – Automatically fetch and analyze new mentions every day (6:00 AM UTC) and push updates back to the repository.  
 - **Comprehensive Logging** – A robust logging system tracks errors, warnings, and pipeline updates.
@@ -160,6 +161,10 @@ company_tracker/
 5. **Database Issues**:
    - If the database becomes corrupted, delete `company_tracker.db` and run `python db.py` to recreate it.
    - Consider making regular backups of your database if you have important data.
+
+6. **GitHub Pages**:
+   - If the static dashboard isn't displaying correctly, ensure your repository is configured for GitHub Pages in Settings.
+   - The static dashboard uses sample data and doesn't require any API keys or database.
 
 ---
 
