@@ -1,8 +1,7 @@
 # Site settings
 title: Company Reputation Tracker
 description: Track company mentions and sentiment analysis
-baseurl: "/Company_reputation_tracker" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+
 
 # Build settings
 markdown: kramdown
@@ -10,6 +9,11 @@ theme: minima
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+
+# GitHub Pages settings
+remote_theme: pages-themes/minima@v0.2.0
+plugins:
+  - jekyll-remote-theme
 
 # Exclude from processing
 exclude:
