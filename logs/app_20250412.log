@@ -1,0 +1,660 @@
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 15:30:09 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:09 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 15:30:09 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 15:30:15 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:15 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 15:30:15 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Retrieved company: Apple (ID: 1)
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 34 positive, 0 neutral, 64 negative
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:30:40 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:30:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:31:05 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:31:05 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:31:05 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:31:05 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:31:05 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:31:08 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:31:08 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:31:08 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:31:08 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:31:08 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:31:10 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:31:10 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:31:10 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:31:10 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:31:10 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:31:16 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:31:16 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:31:16 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:31:16 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:31:16 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:31:22 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:31:22 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:31:22 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:31:22 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:31:22 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 15:35:36 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:36 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 15:35:36 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 15:35:41 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:41 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 15:35:41 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.log_info: Retrieved company: Apple (ID: 1)
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:44 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 34 positive, 0 neutral, 64 negative
+2025-04-12 15:35:44 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting process_company in runner.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Retrieved company: Apple (ID: 1)
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Processing company: Apple (ID: 1)
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting fetch_mentions in api_client.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Retrieved 98 mentions for company ID 1
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Found 100 mentions for Apple
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Completed fetch_mentions in api_client.py successfully
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Found 100 mentions for Apple
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting analyze_mentions in api_client.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Analyzing sentiment for 100 mentions
+2025-04-12 15:35:45 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:45 [INFO] [logger.py] logger.log_info: Loading Hugging Face sentiment analysis model...
+2025-04-12 15:35:46 [INFO] [logger.py] logger.log_info: Hugging Face model loaded successfully!
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:47 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:48 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting analyze_sentiment in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_analyzer in api_client.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_analyzer in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_sentiment in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed analyze_mentions in api_client.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.log_info: Completed sentiment analysis for 100 mentions
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.log_info: Added 53 new mentions for company ID 1
+2025-04-12 15:35:49 [INFO] [logger.py] logger.log_info: Added 53 high-quality mentions to the database
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 59 positive, 0 neutral, 92 negative
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-12 15:35:49 [INFO] [logger.py] logger.wrapper: Completed process_company in runner.py successfully
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:52 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:52 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:35:52 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:35:58 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:35:58 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:35:58 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:02 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:02 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:02 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:06 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:06 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:06 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 15:36:11 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 15:36:11 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 15:36:11 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 18:31:07 [INFO] [logger.py] logger.log_info: Setup step: Setting up Company Reputation Tracker
+2025-04-12 18:31:08 [INFO] [logger.py] logger.log_info: Setup step: Installing dependencies
+2025-04-12 18:31:17 [INFO] [logger.py] logger.log_info: Setup step: Downloading NLTK data
+2025-04-12 18:31:27 [INFO] [logger.py] logger.log_info: Setup step: Initializing the database
+2025-04-12 18:31:27 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 18:31:27 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 18:31:27 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 18:31:27 [INFO] [logger.py] logger.log_info: Setup step: Setup completed successfully!
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 18:31:54 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:31:54 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 18:31:54 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 18:32:32 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:32 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 18:32:32 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Starting init_db in db.py
+2025-04-12 18:32:35 [INFO] [logger.py] logger.log_info: Database initialized successfully.
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Completed init_db in db.py successfully
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:35 [INFO] [logger.py] logger.log_info: Retrieved 2 companies from database
+2025-04-12 18:32:35 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Retrieved company: Apple (ID: 1)
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 59 positive, 0 neutral, 92 negative
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-12 18:32:41 [INFO] [logger.py] logger.log_info: Retrieved 151 mentions for company ID 1
+2025-04-12 18:32:41 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
