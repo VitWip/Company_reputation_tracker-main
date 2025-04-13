@@ -28,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('company-dropdown').addEventListener('change', function() {
     const selectedCompanyId = this.value;
     if (selectedCompanyId && selectedCompanyId !== currentCompanyId) {
+      console.log(`Switching to company ID: ${selectedCompanyId}`);
       loadDashboardData(selectedCompanyId);
     }
   });
@@ -63,10 +64,19 @@ function loadCompaniesList() {
       const dropdown = document.getElementById('company-dropdown');
       dropdown.innerHTML = ''; // Clear the dropdown
       
+      // Add a group title option (disabled)
+      const titleOption = document.createElement('option');
+      titleOption.disabled = true;
+      titleOption.textContent = '-- Select a company by ID --';
+      dropdown.appendChild(titleOption);
+      
+      // Sort companies by ID for clarity
+      companies.sort((a, b) => a.id - b.id);
+      
       companies.forEach(company => {
         const option = document.createElement('option');
         option.value = company.id;
-        option.textContent = `${company.name} (ID: ${company.id})`;
+        option.textContent = `ID ${company.id}: ${company.name}`;
         dropdown.appendChild(option);
       });
       
@@ -119,6 +129,9 @@ function loadDashboardData(companyId = null) {
         dropdown.value = currentCompanyId;
       }
       
+      // Update company info in the UI
+      updateCompanyInfo(data.company);
+      
       // Update metrics
       updateMetrics(dashboardData.stats);
       
@@ -134,6 +147,27 @@ function loadDashboardData(companyId = null) {
       
       return data;
     });
+}
+
+// Update company information in the UI
+function updateCompanyInfo(company) {
+  if (!company) return;
+  
+  // Update the page title to include the company name
+  document.title = `${company.name} - Company Reputation Tracker`;
+  
+  // If there's a company-info element, update it
+  const companyInfoElement = document.getElementById('company-info');
+  if (companyInfoElement) {
+    companyInfoElement.innerHTML = `
+      <h3>${company.name}</h3>
+      <p class="text-muted">ID: ${company.id}</p>
+      ${company.aliases && company.aliases.length > 0 ? 
+        `<p>Also known as: ${company.aliases.join(', ')}</p>` : ''}
+    `;
+  }
+  
+  console.log(`Loaded company: ${company.name} (ID: ${company.id})`);
 }
 
 // Update the metrics cards with data
