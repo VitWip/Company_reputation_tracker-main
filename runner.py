@@ -37,12 +37,12 @@ except ImportError as e:
     API_AVAILABLE = False
 
 @log_function_call
-def process_company(company_id, article_limit=10):
+def process_company(company_id, article_limit=15):
     """Process a single company.
     
     Args:
         company_id: ID of the company to process
-        article_limit: Maximum number of articles to process (default: 10)
+        article_limit: Maximum number of articles to process (default: 15)
     """
     # Get company data
     company = db.get_company(company_id)
@@ -138,7 +138,7 @@ def process_company(company_id, article_limit=10):
         "stats": stats
     }
 
-def run_all_companies(article_limit=10):
+def run_all_companies(article_limit=15):
     """Process all companies in the database."""
     # Initialize database
     db.init_db()
