@@ -14,6 +14,7 @@ jobs:
     
     permissions:
       contents: write
+      pages: write
     
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
@@ -24,8 +25,9 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
           persist-credentials: true
+          fetch-depth: 0
       
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -50,15 +52,29 @@ jobs:
             echo "Warning: NEWSAPI_KEY is not set. News fetching may not work properly."
           fi
       
+      - name: Initialize database if needed
+        run: |
+          python -c "from db import init_db; init_db()"
+          ls -la
+          ls -la logs/ || mkdir -p logs
+          
+      - name: Backup database before processing
+        run: |
+          # Create backups directory if it doesn't exist
+          mkdir -p backups
+          # Backup the database with timestamp
+          cp -f company_tracker.db backups/company_tracker_$(date +%Y%m%d%H%M%S).db || echo "No database to backup yet"
+      
       - name: Run reputation tracker
         run: |
           # List installed packages for debugging
           pip list
-          # Try running with error output
-          python runner.py --generate-only || { echo "Error running script, attempting fallback"; ls -la; }
+          # Run with --all flag to process all companies
+          python runner.py --all --limit 20 || { echo "Error running script, attempting fallback"; python runner.py --generate-only; }
       
       - name: Generate static data files
         run: |
+          mkdir -p assets/data
           python generate_static_data.py || { echo "Error generating static data"; ls -la assets/ || echo "Assets directory not found"; }
       
       - name: Verify data files were generated
@@ -67,24 +83,64 @@ jobs:
             echo "Data files successfully generated"
             echo "Contents:"
             ls -la assets/data/
+            
+            # Check JSON structure of the dashboard data
+            echo "Checking dashboard_data.json structure..."
+            python -c "
+import json, sys
+try:
+    with open('assets/data/dashboard_data.json', 'r') as f:
+        data = json.load(f)
+    if not all(k in data for k in ['company', 'stats', 'mentions', 'timeline']):
+        print('❌ dashboard_data.json is missing required fields')
+        sys.exit(1)
+    print('✅ dashboard_data.json has the correct structure')
+except Exception as e:
+    print(f'❌ Error checking dashboard_data.json: {str(e)}')
+    sys.exit(1)
           else
             echo "Warning: Some data files are missing"
             echo "Current directory content:"
             ls -la
             echo "Assets directory content (if exists):"
             ls -la assets/ || echo "Assets directory not found"
+            # Create necessary directories if they don't exist
+            mkdir -p assets/data
           fi
+      
+      - name: Verify GitHub Pages files
+        run: |
+          # Check for necessary GitHub Pages files
+          echo "Checking for GitHub Pages files..."
+          if [ -f "index.html" ]; then
+            echo "✅ Found index.html"
+          else
+            echo "❌ index.html missing. GitHub Pages may not work correctly."
+          fi
+          if [ -f "_config.yml" ]; then
+            echo "✅ Found _config.yml"
+            grep -i "baseurl\|url\|theme" _config.yml || echo "Warning: Some critical GitHub Pages settings may be missing in _config.yml"
+          else
+            echo "❌ _config.yml missing. GitHub Pages may not work correctly."
+          fi
+          # Check for essential assets directory structure
+          if [ -d "assets/js" ] && [ -f "assets/js/dashboard.js" ]; then
+            echo "✅ Found dashboard.js in assets/js directory"
+          else
+            echo "❌ assets/js/dashboard.js missing. The dashboard may not function correctly."
+          fi
+          echo "GitHub Pages will be published from the entire repository content"
       
       - name: Check for changes
         id: check_changes
         run: |
-          git status --porcelain assets/data/ company_tracker.db
-          if [[ $(git status --porcelain assets/data/ company_tracker.db) ]]; then
+          git status --porcelain assets/data/ company_tracker.db logs/ pipeline_run_report.json
+          if [[ $(git status --porcelain assets/data/ company_tracker.db logs/ pipeline_run_report.json) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in data files or database"
+            echo "Changes detected in data files, database, logs or reports"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in data files or database"
+            echo "No changes detected in data files, database, logs or reports"
           fi
       
       - name: Commit and push if changes
@@ -92,6 +148,28 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add assets/data/*.json company_tracker.db
-          git commit -m "Update dashboard data and database [skip ci]"
-          git push "https://${{ github.actor }}:${{ secrets.PAT_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
+          mkdir -p assets/data
+          git add assets/data/*.json company_tracker.db logs/*.log pipeline_run_report.json || true
+          git commit -m "Update dashboard data, database and logs [skip ci]"
+          git push "https://${{ github.actor }}:${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v3
+        
+      - name: Build with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: ./_site
+          
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
