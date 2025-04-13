@@ -6,7 +6,7 @@ let dashboardData = null;
 // Initialize the dashboard when the page loads
 document.addEventListener('DOMContentLoaded', function() {
   // Fetch dashboard data from JSON file
-  fetch('/Company_reputation_tracker/assets/data/dashboard_data.json')
+  fetch('./assets/data/dashboard_data.json')
     .then(response => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
