@@ -5,11 +5,14 @@ let dashboardData = null;
 
 // Initialize the dashboard when the page loads
 document.addEventListener('DOMContentLoaded', function() {
+  // Get the base URL for the site
+  const baseUrl = window.location.pathname.split('/').slice(0, -1).join('/') || '';
+  
   // Fetch dashboard data from JSON file
-  fetch('{{ site.baseurl }}/assets/data/dashboard_data.json')
+  fetch(`${baseUrl}/assets/data/dashboard_data.json`)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(`Network response was not ok: ${response.status}`);
       }
       return response.json();
     })
@@ -28,7 +31,11 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .catch(error => {
       console.error('Error loading dashboard data:', error);
-      document.getElementById('mentions-table').innerHTML = '<p>Error loading data. Please try again later.</p>';
+      document.getElementById('mentions-table').innerHTML = `
+        <div class="alert alert-danger" role="alert">
+          Error loading data: ${error.message}. Please try again later.
+        </div>
+      `;
     });
 });
 
