@@ -138,7 +138,7 @@ def process_company(company_id, article_limit=15):
         "stats": stats
     }
 
-def run_all_companies(article_limit=10):
+def run_all_companies(article_limit=15):
     """Process all companies in the database."""
     # Initialize database
     db.init_db()
