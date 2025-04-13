@@ -53,9 +53,14 @@ jobs:
         run: |
           if [ -f "assets/data/dashboard_data.json" ] && [ -f "assets/data/companies.json" ]; then
             echo "Data files successfully generated"
+            echo "Contents:"
+            ls -la assets/data/
           else
             echo "Warning: Some data files are missing"
-            ls -la assets/data/
+            echo "Current directory content:"
+            ls -la
+            echo "Assets directory content (if exists):"
+            ls -la assets/ || echo "Assets directory not found"
           fi
       
       - name: Check for changes
@@ -64,8 +69,10 @@ jobs:
           git status --porcelain assets/data/
           if [[ $(git status --porcelain assets/data/) ]]; then
             echo "has_changes=true" >> $GITHUB_OUTPUT
+            echo "Changes detected in data files"
           else
             echo "has_changes=false" >> $GITHUB_OUTPUT
+            echo "No changes detected in data files"
           fi
       
       - name: Commit and push if changes
@@ -76,10 +83,3 @@ jobs:
           git add assets/data/*.json
           git commit -m "Update dashboard data [skip ci]"
           git push
-      
-      - name: Upload data as artifacts
-        uses: actions/upload-artifact@v3.1.3
-        with:
-          name: dashboard-data
-          path: assets/data/*.json
-          retention-days: 7
