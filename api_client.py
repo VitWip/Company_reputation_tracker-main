@@ -202,7 +202,7 @@ class NewsClient:
             return ""
     
     @log_function_call
-    def fetch_mentions(self, company_name, aliases, days=7, limit=10):
+    def fetch_mentions(self, company_name, aliases, days=7, limit=15):
         """Fetch mentions of a company from NewsAPI.
         
         Args:
