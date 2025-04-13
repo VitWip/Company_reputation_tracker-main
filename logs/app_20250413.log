@@ -2542,3 +2542,84 @@ requests.exceptions.HTTPError: 401 Client Error: Unauthorized for url: https://c
 2025-04-13 12:13:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
 2025-04-13 12:13:40 [INFO] [logger.py] logger.log_info: Retrieved 10 mentions for company ID 3
 2025-04-13 12:13:40 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_companies in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved 3 companies from database
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_companies in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved company: Tesla (ID: 1)
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 1 positive, 3 neutral, 8 negative
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved 12 mentions for company ID 1
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_timeline_data in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_timeline_data in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved company: Apple (ID: 2)
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 2: 4 positive, 5 neutral, 1 negative
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved 10 mentions for company ID 2
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_timeline_data in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_timeline_data in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved company: Amazon (ID: 3)
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 3: 2 positive, 3 neutral, 5 negative
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved 10 mentions for company ID 3
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_timeline_data in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_timeline_data in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_company in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved company: Tesla (ID: 1)
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_company in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_stats in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Calculated sentiment stats for company ID 1: 1 positive, 3 neutral, 8 negative
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_stats in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_mentions in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.log_info: Retrieved 12 mentions for company ID 1
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_mentions in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_sentiment_timeline_data in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Starting get_db in db.py
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_db in db.py successfully
+2025-04-13 13:33:46 [INFO] [logger.py] logger.wrapper: Completed get_sentiment_timeline_data in db.py successfully

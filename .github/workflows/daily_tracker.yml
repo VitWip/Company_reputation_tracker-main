@@ -32,6 +32,9 @@ jobs:
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
         run: python runner.py --all
       
+      - name: Generate static data for GitHub Pages
+        run: python generate_static_data.py
+      
       - name: Upload database as artifact
         uses: actions/upload-artifact@v3
         with:
@@ -47,11 +50,12 @@ jobs:
           retention-days: 7
       
       # Optional: Push database changes back to the repository
-      - name: Push database changes to repository
+      - name: Push database and static data changes to repository
         if: ${{ github.event_name != 'pull_request' }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add company_tracker.db
-          git commit -m "Update company mentions database [skip ci]" || echo "No changes to commit"
+          git add assets/data/*.json
+          git commit -m "Update company mentions database and static data [skip ci]" || echo "No changes to commit"
           git push

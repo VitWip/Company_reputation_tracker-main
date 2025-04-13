@@ -1,64 +1,35 @@
 // Company Reputation Tracker - Dashboard JavaScript
 
-// Sample data (in a real implementation, this would be generated from the database)
-const sampleData = {
-  company: {
-    name: "Sample Company",
-    id: 1,
-    aliases: ["Sample", "SampleCo"]
-  },
-  stats: {
-    POSITIVE: 15,
-    NEUTRAL: 25,
-    NEGATIVE: 10,
-    TOTAL: 50,
-    AVG_SCORE: 0.25
-  },
-  mentions: [
-    {
-      title: "Sample Positive Article",
-      source: "News Source 1",
-      published_at: "2023-04-15",
-      sentiment: "POSITIVE",
-      sentiment_score: 0.75,
-      url: "https://example.com/article1"
-    },
-    {
-      title: "Sample Neutral Article",
-      source: "News Source 2",
-      published_at: "2023-04-10",
-      sentiment: "NEUTRAL",
-      sentiment_score: 0.05,
-      url: "https://example.com/article2"
-    },
-    {
-      title: "Sample Negative Article",
-      source: "News Source 3",
-      published_at: "2023-04-05",
-      sentiment: "NEGATIVE",
-      sentiment_score: -0.65,
-      url: "https://example.com/article3"
-    }
-  ],
-  timeline: [
-    { date: "2023-01-01", score: -0.5, sentiment: "NEGATIVE" },
-    { date: "2023-02-01", score: 0.1, sentiment: "NEUTRAL" },
-    { date: "2023-03-01", score: 0.3, sentiment: "POSITIVE" },
-    { date: "2023-04-01", score: 0.7, sentiment: "POSITIVE" }
-  ]
-};
+// Dashboard data will be loaded from JSON files generated from the database
+let dashboardData = null;
 
 // Initialize the dashboard when the page loads
 document.addEventListener('DOMContentLoaded', function() {
-  // Update metrics
-  updateMetrics(sampleData.stats);
-  
-  // Create charts
-  createSentimentChart(sampleData.stats);
-  createTimelineChart(sampleData.timeline);
-  
-  // Populate mentions table
-  populateMentionsTable(sampleData.mentions);
+  // Fetch dashboard data from JSON file
+  fetch('/Company_reputation_tracker/assets/data/dashboard_data.json')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(data => {
+      dashboardData = data;
+      
+      // Update metrics
+      updateMetrics(dashboardData.stats);
+      
+      // Create charts
+      createSentimentChart(dashboardData.stats);
+      createTimelineChart(dashboardData.timeline);
+      
+      // Populate mentions table
+      populateMentionsTable(dashboardData.mentions);
+    })
+    .catch(error => {
+      console.error('Error loading dashboard data:', error);
+      document.getElementById('mentions-table').innerHTML = '<p>Error loading data. Please try again later.</p>';
+    });
 });
 
 // Update the metrics cards with data
