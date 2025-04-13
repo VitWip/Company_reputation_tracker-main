@@ -1,15 +1,12 @@
-name: Daily Company Reputation Tracker
+name: Company Reputation Tracker
 
 on:
   schedule:
-    # Run daily at 6 AM UTC
-    - cron: '30 17 * * *'
-  
-  # Allow manual triggering
-  workflow_dispatch:
+    - cron: '30 17 * * *'  # 5:30 PM UTC daily
+  workflow_dispatch:  # Allow manual triggering
 
 jobs:
-  track_reputation:
+  update_and_deploy:
     runs-on: ubuntu-latest
     
     permissions:
@@ -19,14 +16,12 @@ jobs:
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          token: ${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}
-          persist-credentials: true
+          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
       
       - name: Set up Python
@@ -38,150 +33,42 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          # Ensure NLTK is explicitly installed
           pip install nltk
-          # Download NLTK data
           python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
       
-      - name: Check API keys
+      - name: Run data processing pipeline
         run: |
-          if [ -z "$OPENAI_API_KEY" ]; then
-            echo "Warning: OPENAI_API_KEY is not set. Sentiment analysis may not work properly."
-          fi
-          if [ -z "$NEWSAPI_KEY" ]; then
-            echo "Warning: NEWSAPI_KEY is not set. News fetching may not work properly."
-          fi
-      
-      - name: Initialize database if needed
-        run: |
+          # Initialize DB and directories
+          mkdir -p logs assets/data backups
           python -c "from db import init_db; init_db()"
-          ls -la
-          ls -la logs/ || mkdir -p logs
           
-      - name: Backup database before processing
-        run: |
-          # Create backups directory if it doesn't exist
-          mkdir -p backups
-          # Backup the database with timestamp
-          cp -f company_tracker.db backups/company_tracker_$(date +%Y%m%d%H%M%S).db || echo "No database to backup yet"
-      
-      - name: Run reputation tracker
-        run: |
-          # List installed packages for debugging
-          pip list
-          # Run with --all flag to process all companies
-          python runner.py --all --limit 20 || { echo "Error running script, attempting fallback"; python runner.py --generate-only; }
-      
-      - name: Generate static data files
-        run: |
-          mkdir -p assets/data
-          python generate_static_data.py || { echo "Error generating static data"; ls -la assets/ || echo "Assets directory not found"; }
-      
-      - name: Verify data files were generated
-        run: |
-          if [ -f "assets/data/dashboard_data.json" ] && [ -f "assets/data/companies.json" ]; then
-            echo "Data files successfully generated"
-            echo "Contents:"
-            ls -la assets/data/
-            
-            # Simple check for dashboard data file size
-            FILESIZE=$(stat -c%s "assets/data/dashboard_data.json" 2>/dev/null || stat -f%z "assets/data/dashboard_data.json")
-            if [ "$FILESIZE" -lt 100 ]; then
-              echo "❌ Warning: dashboard_data.json is too small, may be empty or corrupted"
-            else
-              echo "✅ dashboard_data.json size looks good: $FILESIZE bytes"
-            fi
-            
-            # Check if the JSON files are valid
-            echo "Validating JSON files..."
-            
-            # Create a simple validation script
-            cat > validate_json.py << 'EOF'
-import json
-import sys
-import os
-
-def validate_file(filepath):
-    try:
-        with open(filepath, 'r') as f:
-            data = json.load(f)
-        print(f"✅ {filepath} is valid JSON")
-        return True
-    except Exception as e:
-        print(f"❌ {filepath} is invalid: {str(e)}")
-        return False
-
-# Validate dashboard data
-dashboard_valid = validate_file('assets/data/dashboard_data.json')
-companies_valid = validate_file('assets/data/companies.json')
-
-# Exit with error if any validation failed
-if not (dashboard_valid and companies_valid):
-    sys.exit(1)
-EOF
-            
-            # Run the validation
-            python validate_json.py || echo "JSON validation failed, but continuing workflow"
+          # Backup database
+          cp -f company_tracker.db backups/company_tracker_$(date +%Y%m%d).db 2>/dev/null || echo "No database to backup yet"
+          
+          # Process data and generate static files
+          python runner.py --all --limit 20 || python runner.py --generate-only
+          python generate_static_data.py
+          
+          # Verify files were generated
+          if [ -f "assets/data/dashboard_data.json" ]; then
+            echo "✅ Static data generated successfully"
           else
-            echo "Warning: Some data files are missing"
-            echo "Current directory content:"
-            ls -la
-            echo "Assets directory content (if exists):"
-            ls -la assets/ || echo "Assets directory not found"
-            # Create necessary directories if they don't exist
-            mkdir -p assets/data
+            echo "❌ Failed to generate static data"
+            exit 1
           fi
       
-      - name: Verify GitHub Pages files
+      - name: Commit changes
         run: |
-          # Check for necessary GitHub Pages files
-          echo "Checking for GitHub Pages files..."
-          if [ -f "index.html" ]; then
-            echo "✅ Found index.html"
-          else
-            echo "❌ index.html missing. GitHub Pages may not work correctly."
-          fi
-          if [ -f "_config.yml" ]; then
-            echo "✅ Found _config.yml"
-            grep -i "baseurl\|url\|theme" _config.yml || echo "Warning: Some critical GitHub Pages settings may be missing in _config.yml"
-          else
-            echo "❌ _config.yml missing. GitHub Pages may not work correctly."
-          fi
-          # Check for essential assets directory structure
-          if [ -d "assets/js" ] && [ -f "assets/js/dashboard.js" ]; then
-            echo "✅ Found dashboard.js in assets/js directory"
-          else
-            echo "❌ assets/js/dashboard.js missing. The dashboard may not function correctly."
-          fi
-          echo "GitHub Pages will be published from the entire repository content"
+          git config --local user.email "github-actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add assets/data/*.json company_tracker.db logs/*.log || true
+          git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
+          git push || echo "No changes to push or push failed"
       
-      - name: Check for changes
-        id: check_changes
-        run: |
-          git status --porcelain assets/data/ company_tracker.db logs/ pipeline_run_report.json
-          if [[ $(git status --porcelain assets/data/ company_tracker.db logs/ pipeline_run_report.json) ]]; then
-            echo "has_changes=true" >> $GITHUB_OUTPUT
-            echo "Changes detected in data files, database, logs or reports"
-          else
-            echo "has_changes=false" >> $GITHUB_OUTPUT
-            echo "No changes detected in data files, database, logs or reports"
-          fi
-      
-      - name: Commit and push if changes
-        if: steps.check_changes.outputs.has_changes == 'true'
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          mkdir -p assets/data
-          git add assets/data/*.json company_tracker.db logs/*.log pipeline_run_report.json || true
-          git commit -m "Update dashboard data, database and logs [skip ci]"
-          git push "https://${{ github.actor }}:${{ secrets.PAT_TOKEN || secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" HEAD:${{ github.ref }}
-
-      - name: Setup Pages
-        id: pages
+      - name: Setup and deploy to GitHub Pages
         uses: actions/configure-pages@v3
-        
-      - name: Build with Jekyll
+      
+      - name: Build site
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
@@ -193,7 +80,4 @@ EOF
           path: ./_site
           
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
