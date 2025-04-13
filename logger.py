@@ -104,13 +104,19 @@ def get_logger():
     return logger
 
 # Log application startup
-def log_startup():
-    logger.info("=== Application Started ===")
+def log_startup(app_name=None):
+    if app_name:
+        logger.info(f"=== {app_name} Started ===")
+    else:
+        logger.info("=== Application Started ===")
     logger.info(f"Log file: {log_file}")
 
 # Log application shutdown
-def log_shutdown():
-    logger.info("=== Application Shutdown ===")
+def log_shutdown(app_name=None):
+    if app_name:
+        logger.info(f"=== {app_name} Shutdown ===")
+    else:
+        logger.info("=== Application Shutdown ===")
 
 # Log a general message
 def log_info(message):
@@ -133,8 +139,8 @@ def log_debug(message):
 
 # For testing
 if __name__ == "__main__":
-    log_startup()
+    log_startup("Logger Test")
     log_info("This is a test info message")
     log_warning("This is a test warning message")
     log_error("This is a test error message")
-    log_shutdown()
+    log_shutdown("Logger Test")
