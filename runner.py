@@ -213,7 +213,7 @@ if __name__ == "__main__":
     parser.add_argument("--add", action="store_true", help="Add a new company")
     parser.add_argument("--name", type=str, help="Company name (for --add)")
     parser.add_argument("--aliases", type=str, help="Company aliases, comma-separated (for --add)")
-    parser.add_argument("--limit", type=int, default=10, help="Limit the number of articles to process (default: 10)")
+    parser.add_argument("--limit", type=int, default=15, help="Limit the number of articles to process (default: 10)")
     parser.add_argument("--generate-only", action="store_true", help="Skip API calls and only generate static data")
     
     args = parser.parse_args()
