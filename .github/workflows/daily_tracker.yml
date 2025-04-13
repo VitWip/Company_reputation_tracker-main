@@ -12,10 +12,16 @@ jobs:
     permissions:
       contents: write
       pages: write
+      id-token: write  # Required for pages deployment
     
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+    
+    # GitHub Pages environment
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
     steps:
       - name: Checkout repository
@@ -65,19 +71,27 @@ jobs:
           git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
           git push || echo "No changes to push or push failed"
       
-      - name: Setup and deploy to GitHub Pages
+      # Setup Pages
+      - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v3
-      
-      - name: Build site
+
+      # Build with Jekyll
+      - name: Build with Jekyll
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
           
+      # Upload artifact
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-artifact@v3  # Use this artifact uploader first
         with:
+          name: github-pages
           path: ./_site
-          
+          if-no-files-found: error
+      
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
