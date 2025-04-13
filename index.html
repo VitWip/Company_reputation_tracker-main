@@ -24,6 +24,14 @@ permalink: /
       height: 250px;
     }
   }
+  
+  .company-selector {
+    margin-bottom: 20px;
+  }
+  
+  .company-selector select {
+    max-width: 300px;
+  }
 </style>
 
 <div class="container mt-4">
@@ -47,6 +55,20 @@ permalink: /
     <!-- Main content/Right column -->
     <div class="col-md-9">
       <h2>Company Reputation Dashboard</h2>
+      
+      <!-- Company Selector (hidden until loaded) -->
+      <div id="company-selector" class="company-selector" style="display: none;">
+        <div class="card">
+          <div class="card-body">
+            <div class="d-flex align-items-center">
+              <h5 class="card-title mb-0 me-3">Select Company:</h5>
+              <select id="company-dropdown" class="form-select">
+                <option value="">Loading companies...</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
       
       <!-- Loading indicator -->
       <div id="loading-indicator" class="text-center my-4">
@@ -150,6 +172,7 @@ permalink: /
   function showDashboard() {
     document.getElementById('loading-indicator').style.display = 'none';
     document.getElementById('dashboard-content').style.display = 'block';
+    document.getElementById('company-selector').style.display = 'block';
     
     // Trigger resize event to make sure charts are rendered correctly
     window.dispatchEvent(new Event('resize'));

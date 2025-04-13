@@ -2,6 +2,8 @@
 
 // Dashboard data will be loaded from JSON files generated from the database
 let dashboardData = null;
+let companiesList = null;
+let currentCompanyId = null;
 
 // Initialize the dashboard when the page loads
 document.addEventListener('DOMContentLoaded', function() {
@@ -11,12 +13,87 @@ document.addEventListener('DOMContentLoaded', function() {
   const baseUrl = window.location.pathname.split('/').slice(0, -1).join('/') || '';
   console.log('Base URL:', baseUrl);
   
-  // Fetch dashboard data from JSON file
-  // Use relative path for GitHub Pages
-  const dataUrl = 'assets/data/dashboard_data.json';
-  console.log('Fetching data from:', dataUrl);
+  // First, load the companies list
+  loadCompaniesList()
+    .then(() => {
+      // Then load the default dashboard data
+      return loadDashboardData();
+    })
+    .catch(error => {
+      console.error('Error initializing dashboard:', error);
+      handleError(error);
+    });
   
-  fetch(dataUrl)
+  // Handle company selection change
+  document.getElementById('company-dropdown').addEventListener('change', function() {
+    const selectedCompanyId = this.value;
+    if (selectedCompanyId && selectedCompanyId !== currentCompanyId) {
+      loadDashboardData(selectedCompanyId);
+    }
+  });
+  
+  // Handle window resize to make charts responsive
+  window.addEventListener('resize', function() {
+    if (dashboardData) {
+      // Redraw charts on window resize
+      createSentimentChart(dashboardData.stats);
+      createTimelineChart(dashboardData.timeline);
+    }
+  });
+});
+
+// Load companies list
+function loadCompaniesList() {
+  const companiesUrl = 'assets/data/companies.json';
+  console.log('Fetching companies from:', companiesUrl);
+  
+  return fetch(companiesUrl)
+    .then(response => {
+      console.log('Companies response status:', response.status);
+      if (!response.ok) {
+        throw new Error(`Network response was not ok: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(companies => {
+      console.log('Companies loaded successfully:', companies);
+      companiesList = companies;
+      
+      // Populate the dropdown
+      const dropdown = document.getElementById('company-dropdown');
+      dropdown.innerHTML = ''; // Clear the dropdown
+      
+      companies.forEach(company => {
+        const option = document.createElement('option');
+        option.value = company.id;
+        option.textContent = `${company.name} (ID: ${company.id})`;
+        dropdown.appendChild(option);
+      });
+      
+      // Select the first company by default
+      if (companies.length > 0) {
+        dropdown.value = companies[0].id;
+        currentCompanyId = companies[0].id;
+      }
+      
+      return companies;
+    });
+}
+
+// Load dashboard data for a specific company
+function loadDashboardData(companyId = null) {
+  // Show loading indicator
+  document.getElementById('loading-indicator').style.display = 'block';
+  document.getElementById('dashboard-content').style.display = 'none';
+  
+  // Determine which data file to load
+  const dataUrl = companyId 
+    ? `assets/data/company_${companyId}.json` 
+    : 'assets/data/dashboard_data.json';
+  
+  console.log('Fetching dashboard data from:', dataUrl);
+  
+  return fetch(dataUrl)
     .then(response => {
       console.log('Response status:', response.status);
       if (!response.ok) {
@@ -32,6 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('Invalid data structure received');
       }
       
+      // Update the current company ID
+      if (companyId) {
+        currentCompanyId = companyId;
+      } else if (data.company && data.company.id) {
+        currentCompanyId = data.company.id;
+        // Update dropdown selection to match
+        const dropdown = document.getElementById('company-dropdown');
+        dropdown.value = currentCompanyId;
+      }
+      
       // Update metrics
       updateMetrics(dashboardData.stats);
       
@@ -44,21 +131,10 @@ document.addEventListener('DOMContentLoaded', function() {
       
       // Show the dashboard content
       showDashboard();
-    })
-    .catch(error => {
-      console.error('Error loading dashboard data:', error);
-      handleError(error);
+      
+      return data;
     });
-    
-  // Handle window resize to make charts responsive
-  window.addEventListener('resize', function() {
-    if (dashboardData) {
-      // Redraw charts on window resize
-      createSentimentChart(dashboardData.stats);
-      createTimelineChart(dashboardData.timeline);
-    }
-  });
-});
+}
 
 // Update the metrics cards with data
 function updateMetrics(stats) {
