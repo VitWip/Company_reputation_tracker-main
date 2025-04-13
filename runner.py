@@ -37,7 +37,7 @@ except ImportError as e:
     API_AVAILABLE = False
 
 @log_function_call
-def process_company(company_id, article_limit=10):
+def process_company(company_id, article_limit=15):
     """Process a single company.
     
     Args:
