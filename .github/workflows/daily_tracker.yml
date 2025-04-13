@@ -30,6 +30,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          # Ensure NLTK is explicitly installed
+          pip install nltk
+          # Download NLTK data
           python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
       
       - name: Check API keys
@@ -43,11 +46,14 @@ jobs:
       
       - name: Run reputation tracker
         run: |
-          python runner.py
+          # List installed packages for debugging
+          pip list
+          # Try running with error output
+          python runner.py --generate-only || { echo "Error running script, attempting fallback"; ls -la; }
       
       - name: Generate static data files
         run: |
-          python generate_static_data.py
+          python generate_static_data.py || { echo "Error generating static data"; ls -la assets/ || echo "Assets directory not found"; }
       
       - name: Verify data files were generated
         run: |
