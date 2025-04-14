@@ -375,3 +375,24 @@ if __name__ == "__main__":
     
     # Log shutdown
     log_shutdown()
+    
+    # Test NewsAPI client
+    news_client = NewsClient()
+    test_mentions = news_client.fetch_mentions("Tesla", ["TSLA", "Tesla Inc."], days=3)
+    log_info(f"Found {len(test_mentions)} mentions")
+    
+    if test_mentions:
+        # Test sentiment analysis
+        sentiment_result = analyze_sentiment(test_mentions[0]["title"])
+        log_info(f"Sentiment: {sentiment_result['label']}, Score: {sentiment_result['score']}")
+        
+        # Test batch sentiment analysis
+        enriched_mentions = analyze_mentions(test_mentions[:2])
+        log_info(f"Analyzed {len(enriched_mentions)} mentions")
+        for mention in enriched_mentions:
+            log_info(f"Title: {mention['title'][:50]}...")
+            log_info(f"Sentiment: {mention['sentiment']}, Score: {mention['sentiment_score']}")
+            log_info("---")
+    
+    # Log shutdown
+    log_shutdown()
