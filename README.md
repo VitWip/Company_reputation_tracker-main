@@ -93,12 +93,13 @@ The Company Reputation Tracker uses an automated pipeline to collect, analyze, a
 
 ```
 company_tracker/
-├── api_client.py         # Fetches news and applies sentiment analysis
-├── db.py                 # SQLite models & utility functions
-├── index.html            # Dash web application
-├── runner.py             # Main script for fetching & analyzing mentions
-├── setup.py              # Setup script for easy installation
-├── logger.py             # Logging utilities
+├── api_client.py           # Fetches news and applies sentiment analysis
+├── db.py                   # SQLite models & utility functions
+├── index.html              # Dash web application
+├── runner.py               # Main script for fetching & analyzing mentions
+├── setup.py                # Setup script for easy installation
+├── logger.py               # Logging utilities
+├── generate_static_data.py # Transform data from sql file to json format
 ├── requirements.txt
 ├── .github/
 │   └── workflows/
