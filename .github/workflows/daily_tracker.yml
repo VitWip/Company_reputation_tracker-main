@@ -1,130 +1,65 @@
 name: Company Reputation Tracker
-
 on:
-  # Scheduled run (7:50 AM Denmark time in summer)
   schedule:
-    - cron: '08 10 * * *'
+    # Run at 7:50 AM Denmark time (5:50 UTC in summer)
+    - cron: '22 6 * * *'
   
-  # Manual trigger
+  # Allow manual triggering
   workflow_dispatch:
 
-# Permissions
 permissions:
-  contents: write
-  pages: write
-  id-token: write
-
-# Prevent concurrent runs
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write  # Explicit permission to write to repository contents
 
 jobs:
-  # First job: Update the data
-  update-data:
+  update-tracker:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-          cache: 'pip'
-      
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then
-            pip install -r requirements.txt
-          else
-            echo "⚠️ requirements.txt not found!"
-            exit 1
-          fi
-      
-      - name: Log environment info
-        run: |
-          mkdir -p logs
-          echo "Workflow triggered at $(date)" > logs/workflow_run.log
-          echo "Python version: $(python --version)" >> logs/workflow_run.log
-          echo "Working directory: $(pwd)" >> logs/workflow_run.log
-          echo "Files in root:" >> logs/workflow_run.log
-          ls -la >> logs/workflow_run.log
-      
-      - name: Run data processing
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
-        run: |
-          # Create required directories
-          mkdir -p logs assets/data
-          
-          # Initialize database
-          echo "Initializing database..."
-          python -c "from db import init_db; init_db()" || { echo "❌ Database initialization failed"; exit 1; }
-          
-          # Process data with fallback
-          echo "Processing data..."
-          python runner.py --all --limit 20 || { echo "⚠️ Full data processing failed, attempting generate-only mode..."; python runner.py --generate-only; }
-          
-          # Generate static files
-          echo "Generating static files..."
-          python generate_static_data.py || { echo "❌ Static data generation failed"; exit 1; }
-          
-          # Verify generated files
-          echo "Verifying generated files..."
-          ls -la assets/data/ >> logs/workflow_run.log
-          if [ -f "assets/data/dashboard_data.json" ]; then
-            echo "✅ Static data generated successfully" >> logs/workflow_run.log
-          else
-            echo "❌ Failed to generate static data" >> logs/workflow_run.log
-            exit 1
-          fi
-      
-      - name: Commit and push changes
-        run: |
-          git config --local user.email "github-actions@github.com"
-          git config --local user.name "GitHub Actions Bot"
-          
-          # Add generated files
-          git add assets/data/*.json company_tracker.db logs/*.log || true
-          
-          # Only commit if there are changes
-          git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
-          
-          # Push changes
-          git push origin HEAD || { echo "⚠️ Unable to push changes. This is normal if there are no changes or if permissions are insufficient."; }
-
-  # Second job: Build and deploy to GitHub Pages
-  build-and-deploy:
-    needs: update-data
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 1
-      
-      - name: Setup GitHub Pages
-        uses: actions/configure-pages@v4
-      
-      - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-      
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./_site
-      
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+    - name: Checkout repository
+      uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    
+    - name: Run data processing
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
+      run: |
+        # Create required directories
+        mkdir -p logs assets/data
+        
+        # Initialize database
+        python -c "from db import init_db; init_db()" || echo "Database initialization failed"
+        
+        # Process data
+        python runner.py --all --limit 20 || python runner.py --generate-only
+        
+        # Generate static files
+        python generate_static_data.py
+        
+        # Copy any required files for GitHub Pages
+        # Add any file copying commands if needed here
+    
+    - name: Commit and push
+      run: |
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
+        
+        # Add all the generated files
+        git add assets/data/*.json || true
+        git add company_tracker.db || true
+        git add logs/*.log || true
+        
+        # Commit if there are changes
+        git diff --staged --quiet || git commit -m "Update company tracker data for $(date +'%Y-%m-%d')"
+        
+        # Push changes with fallback strategy
+        git push || (git pull --rebase && git push)
