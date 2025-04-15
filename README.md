@@ -2,6 +2,9 @@
 
 A AI powered application that tracks company mentions from news sources, analyzes sentiment using OpenAI, and presents insights through an interactive dashboard.
 
+## Visit the website:
+   https://vitwip.github.io/Company_reputation_tracker-main/
+   
 ## Features
 
 - **Company & Aliases** – Input multiple names or aliases for each company.  
