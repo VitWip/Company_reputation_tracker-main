@@ -1,9 +1,8 @@
 name: Company Reputation Tracker
-
 on:
   # Runs on schedule
   schedule:
-    - cron: '43 7 * * *'  # 6:00 PM UTC daily
+    - cron: '42 7 * * *'  # 7:30 UTC daily
   
   # Allows manual triggering
   workflow_dispatch:
@@ -90,7 +89,6 @@ jobs:
           destination: ./_site
           
       - name: Upload artifact
-        # Use the Pages specific artifact upload action
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./_site
