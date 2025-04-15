@@ -1,19 +1,20 @@
 name: Company Reputation Tracker
+
 on:
-  # Runs on schedule
+  # Scheduled run (7:50 AM Denmark time in summer)
   schedule:
-    - cron: '50 5 * * *'  # 7:30 UTC daily
+    - cron: '52 5 * * *'
   
-  # Allows manual triggering
+  # Manual trigger
   workflow_dispatch:
 
-# Sets permissions of the GITHUB_TOKEN
+# Permissions
 permissions:
-  contents: write  # For writing to repository
-  pages: write  # For GitHub Pages
-  id-token: write  # Required for GitHub Pages
+  contents: write
+  pages: write
+  id-token: write
 
-# Allow only one concurrent deployment
+# Prevent concurrent runs
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -23,52 +24,81 @@ jobs:
   update-data:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
       
       - name: Set up Python
-        uses: actions/setup-python@v4.7.1
+        uses: actions/setup-python@v4
         with:
           python-version: '3.10'
+          cache: 'pip'
       
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          if [ -f requirements.txt ]; then
+            pip install -r requirements.txt
+          else
+            echo "⚠️ requirements.txt not found!"
+            exit 1
+          fi
+      
+      - name: Log environment info
+        run: |
+          mkdir -p logs
+          echo "Workflow triggered at $(date)" > logs/workflow_run.log
+          echo "Python version: $(python --version)" >> logs/workflow_run.log
+          echo "Working directory: $(pwd)" >> logs/workflow_run.log
+          echo "Files in root:" >> logs/workflow_run.log
+          ls -la >> logs/workflow_run.log
       
       - name: Run data processing
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           NEWSAPI_KEY: ${{ secrets.NEWSAPI_KEY }}
         run: |
-          # Initialize directories and database
+          # Create required directories
           mkdir -p logs assets/data
-          python -c "from db import init_db; init_db()"
           
-          # Process data
-          python runner.py --all --limit 20 || python runner.py --generate-only
+          # Initialize database
+          echo "Initializing database..."
+          python -c "from db import init_db; init_db()" || { echo "❌ Database initialization failed"; exit 1; }
+          
+          # Process data with fallback
+          echo "Processing data..."
+          python runner.py --all --limit 20 || { echo "⚠️ Full data processing failed, attempting generate-only mode..."; python runner.py --generate-only; }
           
           # Generate static files
-          python generate_static_data.py
+          echo "Generating static files..."
+          python generate_static_data.py || { echo "❌ Static data generation failed"; exit 1; }
           
-          # Verify files were generated
-          ls -la assets/data/
+          # Verify generated files
+          echo "Verifying generated files..."
+          ls -la assets/data/ >> logs/workflow_run.log
           if [ -f "assets/data/dashboard_data.json" ]; then
-            echo "✅ Static data generated successfully"
+            echo "✅ Static data generated successfully" >> logs/workflow_run.log
           else
-            echo "❌ Failed to generate static data"
+            echo "❌ Failed to generate static data" >> logs/workflow_run.log
             exit 1
           fi
       
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config --local user.email "github-actions@github.com"
-          git config --local user.name "GitHub Actions"
+          git config --local user.name "GitHub Actions Bot"
+          
+          # Add generated files
           git add assets/data/*.json company_tracker.db logs/*.log || true
+          
+          # Only commit if there are changes
           git diff --staged --quiet || git commit -m "Update dashboard data [skip ci]"
-          git push || echo "No changes to push or push failed"
+          
+          # Push changes
+          git push origin HEAD || { echo "⚠️ Unable to push changes. This is normal if there are no changes or if permissions are insufficient."; }
 
-  # Second job: Build and deploy the static site
+  # Second job: Build and deploy to GitHub Pages
   build-and-deploy:
     needs: update-data
     runs-on: ubuntu-latest
@@ -76,10 +106,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3.5.3
+      - name: Checkout repository
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 1
       
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
       
       - name: Build with Jekyll
@@ -87,7 +119,7 @@ jobs:
         with:
           source: ./
           destination: ./_site
-          
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
