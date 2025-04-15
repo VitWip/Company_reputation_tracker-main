@@ -136,7 +136,7 @@ company_tracker/
    - Consider making regular backups of your database if you have important data.
 
 5. **GitHub Pages**:
-   - You can access the live dashboard at `https://YOUR_USERNAME.github.io/YOUR_REPO/`.
+   - You can access the live dashboard at `https://vitwip.github.io/Company_reputation_tracker-main/`.
    - The static dashboard is automatically updated by GitHub Actions with fresh data.
    - If the dashboard isn't displaying correctly, ensure your repository is configured for GitHub Pages in Settings → Pages → Build and deployment → Source: "GitHub Actions".
 
