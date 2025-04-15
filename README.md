@@ -1,25 +1,20 @@
 # Company Reputation Tracker
 
-A Dash-powered application that tracks company mentions from news sources, analyzes sentiment using OpenAI, and presents insights through an interactive dashboard.
-
-[![Python](https://img.shields.io/badge/Python-3.9%2B-blue)](#)
-[![License](https://img.shields.io/badge/License-MIT-lightgrey)](#)
-[![Daily Tracker](https://vitwip.github.io/Company_reputation_tracker-main/)]
+A AI powered application that tracks company mentions from news sources, analyzes sentiment using OpenAI, and presents insights through an interactive dashboard.
 
 ## Features
 
 - **Company & Aliases** – Input multiple names or aliases for each company.  
-- **News Fetching** – Pull mentions from [NewsAPI](https://newsapi.org/) for the past 7 days (configurable).  
+- **News Fetching** – Pull mentions from [NewsAPI](https://newsapi.org/) for the past days.  
 - **Content Extraction** – Uses BeautifulSoup to retrieve full article text for more accurate analysis.
 - **Advanced Sentiment Analysis** – Leverages OpenAI's GPT-4o-mini model to label each mention as POSITIVE, NEUTRAL, or NEGATIVE, with a score between -1 and +1.  
-- **Interactive Dash Dashboard** – Visualize sentiment distribution, timeline trends, and detailed mention tables in real-time.  
-- **Static GitHub Pages Dashboard** – A static version of the dashboard available online without running the Python application. Now fully implemented and deployed!  
+- **Static Dashboard** – Visualize sentiment distribution, timeline trends, and detailed mention tables in real-time.  
+- **Static GitHub Pages Dashboard** – A static version of the dashboard available online without running the Python application.
 - **SQLite Database** – Persist all companies, aliases, and mentions in a local database.  
 - **GitHub Actions Automation** – Automatically fetch and analyze new mentions every day (6:00 AM UTC) and push updates back to the repository.  
 - **Logging** – A robust logging system tracks errors, warnings, and pipeline updates.
 
 ---
-
 
 
 ## GitHub Actions for Automated Updates
@@ -50,7 +45,7 @@ The Company Reputation Tracker uses an automated pipeline to collect, analyze, a
 
 1. **Data Collection**:
    - The pipeline starts by querying the NewsAPI for articles mentioning each company and its aliases.
-   - Articles from the past 7 days are retrieved (configurable timeframe).
+   - Articles from the past days are retrieved (configurable timeframe).
    - For each article, metadata like title, source, publication date, and URL are collected.
 
 2. **Content Extraction**:
@@ -70,7 +65,7 @@ The Company Reputation Tracker uses an automated pipeline to collect, analyze, a
    - Historical data is preserved for trend analysis.
 
 5. **Dashboard Updates**:
-   - The Dash dashboard reads from the database to display real-time insights.
+   - The dashboard reads from the database to display real-time insights.
    - Visualizations are automatically refreshed when new data is available.
    - For GitHub Pages, static JSON files are generated to power the online dashboard.
 
@@ -112,12 +107,10 @@ company_tracker/
 
 ## Dashboard Highlights
 
-- **Company Selection**: Choose any tracked company from the sidebar.  
 - **Sentiment Overview**: Bar chart showing distribution of POSITIVE, NEUTRAL, NEGATIVE mentions.  
-- **Average Score**: Real-time gauge of sentiment performance, updated with new mentions.  
+- **Average Score**: Real-time sentiment performance, updated with new mentions.  
 - **Sentiment Timeline**: See how sentiment changes over time, with optional trend lines.  
 - **Recent Mentions**: Table of the latest articles, color-coded by sentiment.  
-- **Filters**: Narrow results by date range and sentiment type.
 
 ---
 
@@ -134,16 +127,22 @@ company_tracker/
 3. **Logs**: 
    - Check the `logs/` folder for detailed error messages and pipeline steps.
 
-
-
 4. **Database Issues**:
    - If the database becomes corrupted, delete `company_tracker.db` and run `db.py` to recreate it.
    - Consider making regular backups of your database if you have important data.
 
 5. **GitHub Pages**:
-   - The project is now fully deployed on GitHub Pages! You can access the live dashboard at `https://YOUR_USERNAME.github.io/YOUR_REPO/`.
+   - You can access the live dashboard at `https://YOUR_USERNAME.github.io/YOUR_REPO/`.
    - The static dashboard is automatically updated by GitHub Actions with fresh data.
    - If the dashboard isn't displaying correctly, ensure your repository is configured for GitHub Pages in Settings → Pages → Build and deployment → Source: "GitHub Actions".
+
+---
+
+## Contributers
+
+- Oliver Højbjerre-Frandnsen
+- Vittorio Wollner Infante Papa
+- Daniel Sørensen Riisager
 
 ---
 
