@@ -97,7 +97,6 @@ company_tracker/
 ├── db.py                   # SQLite models & utility functions
 ├── index.html              # Dash web application
 ├── runner.py               # Main script for fetching & analyzing mentions
-├── setup.py                # Setup script for easy installation
 ├── logger.py               # Logging utilities
 ├── generate_static_data.py # Transform data from sql file to json format
 ├── requirements.txt
